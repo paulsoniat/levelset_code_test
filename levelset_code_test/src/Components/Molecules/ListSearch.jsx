@@ -7,9 +7,9 @@ const ListSearch = ({filterSearchFunction, setCardDisplay, data}) => {
     On top of that it combines the search component as well as takes in the filter function from the props to filter the rendered results if desired
   */
   const catNavRender = infoList => {
-    return infoList.map (individualInfo => {
+    return infoList.map ((individualInfo, index) => {
       return (
-        <NavCard cardInfo={individualInfo} setCardDisplay={setCardDisplay} />
+        <NavCard key={index} cardInfo={individualInfo} setCardDisplay={setCardDisplay} />
       );
     });
   };
