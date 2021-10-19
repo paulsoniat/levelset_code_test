@@ -1,15 +1,16 @@
-const Popup = ({ handleDeleteTrue, handleDeleteFalse }) => {
-    return (
+const Popup = ({handleDeleteTrue, handleDeleteFalse}) => {
+  return (
+    <div>
       <div>
-        <div>
-          <p>You sure you wanna delete?</p>
-          <button onClick={handleDeleteFalse}>
-            Cancel</button>
-          <button onClick={handleDeleteTrue}>
-            Confirm
-          </button>
-        </div>
+        <p>Send the cat to the SPCA?</p>
+        <button onClick={handleDeleteFalse}>
+          Cancel
+        </button>
+        <button onClick={handleDeleteTrue}>
+          Confirm
+        </button>
       </div>
-    );
-  }
-export default Popup
+    </div>
+  );
+};
+export default Popup;

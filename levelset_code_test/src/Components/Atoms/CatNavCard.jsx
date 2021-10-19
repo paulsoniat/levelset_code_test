@@ -1,22 +1,20 @@
-
-
-const CatNavCard = (props) => {
-    //TODO add use effect to update state of local storage for cat on click
-    const {cardInfo, setCardDisplay, modalOpen} = props
-    const styleObj = {"height" : "100px", "width" : "50%" }
-    return (
-       <div className="col-12" style={{backgroundColor: 'white', border:' 1px solid black'}} onClick={() => {setCardDisplay(cardInfo, true)}}>
-        <img 
-            src={cardInfo.thumbnailUrl}
-            alt=""
-            style={styleObj}
-         />
+const CatNavCard = props => {
+  const {cardInfo, setCardDisplay} = props;
+  return (
+    <div
+      className="col-12 nav-card"
+      onClick={() => {
+        setCardDisplay (cardInfo, true);
+      }}
+    >
+      <img src={cardInfo.thumbnailUrl} alt="" className="nav-image" />
+      <h6 className="card-text">
         {cardInfo.name}
-        <br/>
-        {cardInfo.birthday}
-      </div>
-    );
-  }
-  
-  export default CatNavCard;
-  
+      </h6>
+      <br />
+      {cardInfo.birthday}
+    </div>
+  );
+};
+
+export default CatNavCard;
