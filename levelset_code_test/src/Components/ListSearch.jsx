@@ -9,8 +9,11 @@ const ListSearch = (props) => {
             return <CatNavCard cardInfo={catInfo} setCardDisplay={props.setCardDisplay}/>
         })
     }
+    const rowStyle = {
+      "minWidth": "20vw",
+  }
     return (
-        <div className="row vw-20">
+        <div className="row" style={rowStyle}>
         <CatNavSearch filterSearchItems={props.filterSearchFunction} />
         {catNavRender(props)}
       </div>

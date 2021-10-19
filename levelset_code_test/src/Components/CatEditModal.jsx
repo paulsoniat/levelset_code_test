@@ -18,6 +18,12 @@ const CatEditModal = (props) => {
     props.setCatData(updatedCatData)
     localStorage.setItem('mockData', JSON.stringify(updatedCatData));
   }
+
+  const _formatDate = (dateString) => {
+    const splitDate = dateString.split(' ');
+    const formattedDate = `${splitDate[2]} ${splitDate[1]} ${splitDate[3]}`
+    return formattedDate;
+  }
   console.log(selectedCat)
   const [startDate, setStartDate] = useState(new Date());
   return (
@@ -48,8 +54,8 @@ const CatEditModal = (props) => {
         Birthdate
           <DatePicker selected={startDate} onChange={(date) =>  {
             setStartDate(date)
-            setSelectedCat({...selectedCat, birthday: date.toString()})
-            console.log(selectedCat, date, 'cat date')
+            const formattedDate = _formatDate(date.toString())
+            setSelectedCat({...selectedCat, birthday: formattedDate})
           }} />
         </div>
         <div className="col-12">

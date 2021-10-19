@@ -13,7 +13,7 @@ const App = () => {
   if (mockCatData) {
     return (
       <div className="App">
-       <CatAppContainer />
+       <CatAppContainer mockData={mockCatData} setMockData={setMockCatData} />
       </div>
     );
   } else {
