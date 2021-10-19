@@ -27,9 +27,11 @@ const CatAppContainer = props => {
     const filterDataByName = mockData.filter (cat => {
       return cat.name.toLowerCase ().includes (catName.toLowerCase ());
     });
-    setFilter (true);
+    !catName ? setFilter(false) : setFilter (true);
     setFilteredCatData (filterDataByName);
   };
+
+  console.log(filter, filteredCatData, mockData)
 
   return (
     <div>

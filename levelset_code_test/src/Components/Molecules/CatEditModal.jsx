@@ -16,12 +16,14 @@ const CatEditModal = props => {
     */
     const catData = JSON.parse (localStorage.mockData);
     const updatedCatData = catData.map (cat => {
+      console.log(selectedCat, 'selected cat')
       if (cat.id !== selectedCat.id) {
         return cat;
       }
       return selectedCat;
     });
-    props.setCatData (updatedCatData);
+    console.log(updatedCatData, 'updated data')
+    props.setCatData(updatedCatData);
     localStorage.setItem ('mockData', JSON.stringify (updatedCatData));
   };
   //TODO: break out the logic of these into a reusable component for first two inputs
