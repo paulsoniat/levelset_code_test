@@ -1,9 +1,12 @@
+import {useState} from 'react';
 import Dropdown from '../Atoms/Dropdown';
-import InputField from '../Atoms/InputField';
-import DateSelector from '../Atoms/DateSelector';
+import DatePicker from 'react-datepicker';
 import {options} from '../../Helpers/Constants/DropdownMenuOptions';
+import {formatDate} from '../../Helpers/Functions/formatDate';
+import 'react-datepicker/dist/react-datepicker.css';
 
 const EditModal = ({toggleModal, modalOpen, selectedCat, setSelectedCat, setCatData}) => {
+  const [startDate, setStartDate] = useState (new Date ());
 
   const _editModalCat = () => {
     /* 
@@ -27,7 +30,6 @@ const EditModal = ({toggleModal, modalOpen, selectedCat, setSelectedCat, setCatD
     The following view will allow users to change inputs and view those changes in real time for the selected cat
     However, only on save will all data flow upwards and actually change the underlying data set
     Use this component to edit information about the initial underlying data, and save if desired.
-    This component combines atoms together to make the selections
   */
   return (
     <div class="modal-content">
@@ -44,9 +46,35 @@ const EditModal = ({toggleModal, modalOpen, selectedCat, setSelectedCat, setCatD
       </div>
       <div className="row">
         <div class="modal-body">
-          <InputField setSelectedOption={setSelectedCat} selectedOption={selectedCat} inputTitle={"Thumbnail URL"}/>
-          <InputField setSelectedOption={setSelectedCat} selectedOption={selectedCat} inputTitle={"Name"}/>
-          <DateSelector setSelectedOption={setSelectedCat} selectedOption={selectedCat} inputTitle="Birthdate"/>
+          <div className="col-12">
+            Thumbnail Url
+            <input
+              onChange={e => {
+                e.preventDefault ();
+                setSelectedCat ({...selectedCat, thumbnailUrl: e.target.value});
+              }}
+            />
+          </div>
+          <div className="col-12">
+            Name
+            <input
+              onChange={e => {
+                e.preventDefault ();
+                setSelectedCat ({...selectedCat, name: e.target.value});
+              }}
+            />
+          </div>
+          <div className="col-12">
+            Birthdate
+            <DatePicker
+              selected={startDate}
+              onChange={date => {
+                setStartDate (date);
+                const formattedDate = formatDate (date.toString ());
+                setSelectedCat ({...selectedCat, birthday: formattedDate});
+              }}
+            />
+          </div>
           <div className="col-12">
             Owner
             <Dropdown
