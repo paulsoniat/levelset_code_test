@@ -2,6 +2,7 @@ import {useState} from 'react';
 import Popup from '../Atoms/DeleteModal';
 import EditModal from './EditModal';
 import InfoCard from '../Atoms/InfoCard';
+import InitialPrompt from '../Atoms/InitialPrompt';
 
 const InfoDisplay = ({setSelectedCat, setData, selectedCat, modalOpen, setModal}) => {
   const editCat = (catId, callback, callbackId) => {
@@ -72,7 +73,7 @@ const InfoDisplay = ({setSelectedCat, setData, selectedCat, modalOpen, setModal}
             selectedCat={selectedCat}
             setSelectedCat={setSelectedCat}
           />
-        : <div> Please select a cat to continue </div>}
+        : <InitialPrompt />}
       {selectedCat && !modalOpen
         ? <div>
             <button
