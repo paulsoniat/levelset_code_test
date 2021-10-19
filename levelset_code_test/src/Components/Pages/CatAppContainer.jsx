@@ -1,10 +1,10 @@
 //import nav and import body from react components
 
 import {useEffect, useState} from 'react'
-import mockData from '../Helpers/mockData'
-import ListSearch from './ListSearch'
-import CatInfoDisplay from './CatInfoDisplay'
-import CatEditModal from './CatEditModal'
+import mockData from '../../Helpers/Constants/mockData'
+import ListSearch from '../Molecules/ListSearch'
+import CatInfoDisplay from '../Molecules/CatInfoDisplay'
+import CatEditModal from '../Molecules/CatEditModal'
 const CatAppContainer = (props) => {
   const {mockData, setMockData} = props;
   const [filteredCatData, setFilteredCatData] = useState([]);

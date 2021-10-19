@@ -1,5 +1,5 @@
-import CatNavCard from './CatNavCard';
-import CatNavSearch from './CatNavSearch';
+import CatNavCard from '../Atoms/CatNavCard';
+import CatNavSearch from '../Atoms/CatNavSearch';
 
 const ListSearch = (props) => {
     //TODO: add count increase to set Card Display function

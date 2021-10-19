@@ -1,8 +1,8 @@
 //import nav and import body from react components
 
 import {useEffect, useState} from 'react'
-import mockData from './Helpers/mockData'
-import CatAppContainer from './Components/CatAppContainer'
+import mockData from './Helpers/Constants/mockData'
+import CatAppContainer from './Components/Pages/CatAppContainer'
 const App = () => {
 
   const [mockCatData, setMockCatData] = useState(mockData);

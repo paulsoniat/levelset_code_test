@@ -1,5 +1,5 @@
 import {useState} from 'react' 
-import Dropdown from './Dropdown';
+import Dropdown from '../Atoms/Dropdown';
 import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";

@@ -1,11 +1,10 @@
 import {useState} from 'react';
-import Popup from '../Components/DeleteModal'
-import CatEditModal from '../Components/CatEditModal';
-import CatInfoCard from '../Components/CatInfoCard';
+import Popup from '../Atoms/DeleteModal'
+import CatEditModal from './CatEditModal';
+import CatInfoCard from '../Atoms/CatInfoCard';
 
 const CatInfoDisplay = (props) => {
     const editCat = (catId, callback, callbackId) => {
-      const catData = JSON.parse(localStorage.mockData);
       callback(!callbackId)
   }
 
@@ -51,17 +50,6 @@ const CatInfoDisplay = (props) => {
     });
   };
   
-  const deleteCat = (catId) => {
-      const catData = JSON.parse(localStorage.mockData);
-      const updatedCatData = catData.filter((cat) => {
-        if (cat.id !== catId) {
-          return cat;
-        }
-      })
-      props.setData(updatedCatData)
-      props.setSelectedCat()
-      localStorage.setItem('mockData', JSON.stringify(updatedCatData))
-  }
     return (
       <div className="col-lg-10 col-md-10 col-sm-9 vh-100" style={{backgroundColor: 'gray'}}>
         {props.modalOpen ? <CatEditModal selectedCat={props.selectedCat} setSelectedCat={props.setSelectedCat} toggleModal={props.setModal} modalOpen={props.modalOpen} setCatData={props.setData}/> : null}
@@ -71,12 +59,12 @@ const CatInfoDisplay = (props) => {
           <button onClick={() => {editCat(props.selectedCat.id, props.setModal)}}> Edit </button>
           <button onClick={() => {handleDelete(props.selectedCat.id)}}> Delete </button> 
         </div> : null}
-                     {popup.show && (
-      <Popup
-        handleDeleteTrue={handleDeleteTrue}
-        handleDeleteFalse={handleDeleteFalse}
-      />
-    )}
+        {popup.show && (
+          <Popup
+            handleDeleteTrue={handleDeleteTrue}
+            handleDeleteFalse={handleDeleteFalse}
+          />
+       )}
       </div>
     );
   }
