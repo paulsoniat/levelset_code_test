@@ -11,7 +11,6 @@ const App = () => {
   }, [])
   
   if (mockCatData) {
-    console.log(mockCatData, 'mock data data')
     return (
       <div className="App">
        <CatAppContainer />

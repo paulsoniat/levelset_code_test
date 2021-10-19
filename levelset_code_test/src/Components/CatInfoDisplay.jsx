@@ -2,8 +2,6 @@ import CatEditModal from '../Components/CatEditModal'
 import CatInfoCard from '../Components/CatInfoCard'
 
 const CatInfoDisplay = (props) => {
-    console.log(props, 'props 2')
-    //TODO: add edit and delet helpers for the cats
     const editCat = (catId, callback, callbackId) => {
       const catData = JSON.parse(localStorage.mockData);
 
@@ -22,7 +20,6 @@ const CatInfoDisplay = (props) => {
       props.setSelectedCat()
       localStorage.setItem('mockData', JSON.stringify(updatedCatData))
   }
-  console.log(props.selectedCat, 'this is cat main1!@!@')
     return (
        <div className="col-lg-10 col-md-10 col-sm-9 vh-100" style={{backgroundColor: 'gray'}}>
         {props.modalOpen ? <CatEditModal selectedCat={props.selectedCat} setSelectedCat={props.setSelectedCat} toggleModal={props.setModal} modalOpen={props.modalOpen} setCatData={props.setData}/> : null}

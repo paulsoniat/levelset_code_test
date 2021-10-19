@@ -1,11 +1,15 @@
 const CatInfoCard = (props) => {
-    const styleObj = {"height" : "250px", "width" : "50%" }
+    const styleObj = {
+        margin: "auto",
+        width: "60%",
+        border: "3px solid #73AD21",
+        padding: "10px"
+      }
     return (
-        <div>
+        <div style={styleObj}>
         <img 
             src={props.selectedCat.thumbnailUrl}
             alt=""
-            style={styleObj}
          />
             <div> {props.selectedCat.name} </div>
             <div> {props.selectedCat.birthday} </div>
