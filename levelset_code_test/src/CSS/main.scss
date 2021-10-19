@@ -1,10 +1,10 @@
-@import './Pages/CatAppContainer.scss';
-@import './Molecules/CatEditModal.scss';
-@import './Molecules/CatInfoDisplay.scss';
+@import './Pages/AppContainer.scss';
+@import './Molecules/EditModal.scss';
+@import './Molecules/InfoDisplay.scss';
 @import './Molecules/ListSearch.scss';
-@import './Atoms/CatInfoCard.scss';
-@import './Atoms/CatNavCard.scss';
-@import './Atoms/CatNavSearch.scss';
+@import './Atoms/InfoCard.scss';
+@import './Atoms/NavCard.scss';
+@import './Atoms/NavSearch.scss';
 @import './Atoms/DeleteModal.scss';
 @import './Atoms/Dropdown.scss';
 @import './Generics.scss';

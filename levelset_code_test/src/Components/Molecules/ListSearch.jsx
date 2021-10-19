@@ -1,19 +1,23 @@
-import CatNavCard from '../Atoms/CatNavCard';
-import CatNavSearch from '../Atoms/CatNavSearch';
+import NavCard from '../Atoms/NavCard';
+import NavSearch from '../Atoms/NavSearch';
 
-const ListSearch = props => {
-  const catNavRender = props => {
-    return props.data.map (catInfo => {
+const ListSearch = ({filterSearchFunction, setCardDisplay, data}) => {
+  /*
+    This component uses a simple render function to take in data about nav item list and render them displaying simple card info in the nav card component
+    On top of that it combines the search component as well as takes in the filter function from the props to filter the rendered results if desired
+  */
+  const catNavRender = infoList => {
+    return infoList.map (individualInfo => {
       return (
-        <CatNavCard cardInfo={catInfo} setCardDisplay={props.setCardDisplay} />
+        <NavCard cardInfo={individualInfo} setCardDisplay={setCardDisplay} />
       );
     });
   };
   return (
     <div className="cat-nav-list">
       <div className="row">
-        <CatNavSearch filterSearchItems={props.filterSearchFunction} />
-        {catNavRender (props)}
+        <NavSearch filterSearchItems={filterSearchFunction} />
+        {catNavRender (data)}
       </div>
     </div>
   );

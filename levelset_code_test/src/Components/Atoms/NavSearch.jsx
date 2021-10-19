@@ -1,7 +1,10 @@
-const CatNavSearch = props => {
+const NavSearch = ({filterSearchItems}) => {
+  /*
+    This component will take in a filter function and use the props functions to filter items based on input search
+  */
   const onChangeFunction = e => {
     e.preventDefault ();
-    props.filterSearchItems (e.target.value);
+    filterSearchItems (e.target.value);
   };
   return (
     <div className="col-12 no-padding white-background">
@@ -15,4 +18,4 @@ const CatNavSearch = props => {
   );
 };
 
-export default CatNavSearch;
+export default NavSearch;

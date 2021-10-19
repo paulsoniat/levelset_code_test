@@ -1,9 +1,9 @@
 import {useState} from 'react';
 import Popup from '../Atoms/DeleteModal';
-import CatEditModal from './CatEditModal';
-import CatInfoCard from '../Atoms/CatInfoCard';
+import EditModal from './EditModal';
+import InfoCard from '../Atoms/InfoCard';
 
-const CatInfoDisplay = props => {
+const InfoDisplay = ({setSelectedCat, setData, selectedCat, modalOpen, setModal}) => {
   const editCat = (catId, callback, callbackId) => {
     callback (!callbackId);
   };
@@ -18,7 +18,6 @@ const CatInfoDisplay = props => {
       show: true,
       id,
     });
-    console.log (popup, 'popup');
   };
 
   // This will perform the deletion and hide the Confirmation Box
@@ -27,12 +26,12 @@ const CatInfoDisplay = props => {
     if (popup.show && popup.id) {
       const catData = JSON.parse (localStorage.mockData);
       const updatedCatData = catData.filter (cat => {
-        if (cat.id !== props.selectedCat.id) {
+        if (cat.id !== selectedCat.id) {
           return cat;
         }
       });
-      props.setData (updatedCatData);
-      props.setSelectedCat ();
+      setData (updatedCatData);
+      setSelectedCat ();
       localStorage.setItem ('mockData', JSON.stringify (updatedCatData));
       setPopup ({
         show: false,
@@ -50,38 +49,42 @@ const CatInfoDisplay = props => {
     });
   };
 
+  /*
+    This component handles view logic as well as edit and delete request for viewing particular cards that a user would like to edit
+    It will use the props to handle edit and delete logic as well as what to render with local function depending on the state
+    This can be used to determine what the user is shown on the main screen for interactive purposes in the application.
+  */
   return (
     <div
-      className="col-lg-10 col-md-10 col-sm-9 vh-100"
-      style={{backgroundColor: 'gray'}}
+      className="col-lg-10 col-md-10 col-sm-9 display-container grey-background"
     >
-      {props.modalOpen
-        ? <CatEditModal
-            selectedCat={props.selectedCat}
-            setSelectedCat={props.setSelectedCat}
-            toggleModal={props.setModal}
-            modalOpen={props.modalOpen}
-            setCatData={props.setData}
+      {modalOpen
+        ? <EditModal
+            selectedCat={selectedCat}
+            setSelectedCat={setSelectedCat}
+            toggleModal={setModal}
+            modalOpen={modalOpen}
+            setCatData={setData}
           />
         : null}
-      {props.selectedCat
-        ? <CatInfoCard
-            selectedCat={props.selectedCat}
-            setSelectedCat={props.setSelectedCat}
+      {selectedCat
+        ? <InfoCard
+            selectedCat={selectedCat}
+            setSelectedCat={setSelectedCat}
           />
         : <div> Please select a cat to continue </div>}
-      {props.selectedCat && !props.modalOpen
+      {selectedCat && !modalOpen
         ? <div>
             <button
               onClick={() => {
-                editCat (props.selectedCat.id, props.setModal);
+                editCat (selectedCat.id, setModal);
               }}
             >
               {' '}Edit{' '}
             </button>
             <button
               onClick={() => {
-                handleDelete (props.selectedCat.id);
+                handleDelete (selectedCat.id);
               }}
             >
               {' '}Delete{' '}
@@ -97,4 +100,4 @@ const CatInfoDisplay = props => {
   );
 };
 
-export default CatInfoDisplay;
+export default InfoDisplay;

@@ -1,6 +1,10 @@
 import {useState} from 'react';
 
 const Dropdown = ({options, setSelectedOption, currentSelection}) => {
+  /*
+    This component takes in options and renders them as a menu
+    It will set the selection to the parent that passes in the props function as well as on the menu of the component as well
+  */
   const [dropdownOption, setDropdownOption] = useState (options[0].value);
   const updateSelection = e => {
     e.preventDefault ();

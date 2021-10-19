@@ -1,4 +1,7 @@
 .cat-nav-list {
     display: flex;
-    flex: auto
+    flex: auto;
+    max-height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
